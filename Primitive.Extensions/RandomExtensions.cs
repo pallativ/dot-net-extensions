@@ -33,11 +33,11 @@
             var result = new char[size];
             for (var i = 0; i < size; i++)
             {
-                var position = random.Next(Alphabets.Length+1);
+                var position = random.Next(Alphabets.Length);
                 result[i] = Alphabets[position];
             }
 
-            return result.ToString() ?? string.Empty;
+            return new string(result);
         }
     }
 }
