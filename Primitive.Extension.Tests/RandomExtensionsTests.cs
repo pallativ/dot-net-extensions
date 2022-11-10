@@ -14,5 +14,20 @@ namespace Primitive.Extension.Tests
               Assert.True(i is >= 10 and <= 20); 
             }
         }
+
+
+        [Theory]
+        [InlineData(10)]
+        [InlineData(20)]
+        [InlineData(5)]
+        [InlineData(21)]
+        [InlineData(26)]
+        [InlineData(1000)]
+        public void VerifyNextString(int size)
+        {
+            var random = new Random();
+            var result = random.NextString(size);
+            Assert.True(result.Length == size);
+        }
     }
 }
