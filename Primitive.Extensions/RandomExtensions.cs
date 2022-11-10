@@ -3,6 +3,7 @@
     public static class RandomExtensions
     {
         private const string Alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private const string AlphaNumberic = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
         /// <summary>
         /// Gets the array of random numbers.
@@ -28,13 +29,14 @@
         /// <param name="random"><see cref="Random"/></param>
         /// <param name="size">Size of the random string</param>
         /// <returns></returns>
-        public static string NextString(this Random random, int size)
+        public static string NextString(this Random random, int size, bool isAlphanumeric = false)
         {
             var result = new char[size];
             for (var i = 0; i < size; i++)
             {
-                var position = random.Next(Alphabets.Length);
-                result[i] = Alphabets[position];
+                var charSet =  isAlphanumeric ? AlphaNumberic : Alphabets;
+                var position = random.Next(charSet.Length);
+                result[i] = charSet[position];
             }
 
             return new string(result);
