@@ -1,4 +1,5 @@
 using Primitive.Extensions;
+using System.Text.RegularExpressions;
 
 namespace Primitive.Extension.Tests
 {
@@ -25,9 +26,11 @@ namespace Primitive.Extension.Tests
         [InlineData(1000)]
         public void VerifyNextString(int size)
         {
+            Regex regex = new Regex("^[A-Z]*$");
             var random = new Random();
             var result = random.NextString(size);
             Assert.True(result.Length == size);
+            Assert.Matches(regex, result);
         }
     }
 }

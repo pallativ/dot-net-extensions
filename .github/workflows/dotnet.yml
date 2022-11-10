@@ -25,4 +25,22 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx --results-directory coverage 
+
+    - name: ReportGenerator
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.1.10
+      with:
+        reports: coverage/*/coverage.cobertura.xml
+        targetdir: CoverageReport 
+        reporttypes: Html;Cobertura
+
+    - name: Code Coverage Summary Report
+      uses: irongut/CodeCoverageSummary@v1.3.0
+      with:
+        filename: CoverageReport/Cobertura.xml
+        badge: true
+        format: 'markdown'
+        output: 'both'
+   
+    - name: Write to Job Summary
+      run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY                
