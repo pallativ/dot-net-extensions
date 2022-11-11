@@ -1,6 +1,10 @@
 using System.Data;
-public static class DataTableExtensions {
-    public static void AddRow(this DataTable dataTable, object[] record){
 
+namespace Primitive.Extensions;
+
+public static class DataTableExtensions {
+    public static void AddRow(this DataTable dataTable, object[] record)
+    {
+        dataTable.Rows.Add(record);
     }
 }
