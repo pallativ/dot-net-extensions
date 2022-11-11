@@ -6,7 +6,7 @@ namespace Primitive.Extension.Tests
     public class RandomExtensionsTests
     {
         [Fact]
-        public void VerifyRandomArrayGeneration()
+        public void Verify_Random_Array_Generation()
         {
             var random = new Random();
             var result = random.Generate(10, 20, 10);
@@ -24,7 +24,7 @@ namespace Primitive.Extension.Tests
         [InlineData(21)]
         [InlineData(26)]
         [InlineData(1000)]
-        public void VerifyNextString(int size)
+        public void Verify_NextString(int size)
         {
             Regex regex = new Regex("^[A-Z]*$");
             var random = new Random();
