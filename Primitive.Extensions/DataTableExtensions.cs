@@ -2,9 +2,22 @@ using System.Data;
 
 namespace Primitive.Extensions;
 
-public static class DataTableExtensions {
-    public static void AddRow(this DataTable dataTable, object[] record)
+public static class DataTableExtensions
+{
+
+    /// <summary>
+    /// Gets the data table types.
+    /// </summary>
+    /// <param name="dataTable"></param>
+    /// <returns>return <see cref="IDictionary{TKey,TValue}"/></returns>
+    public static Dictionary<string, Type> GetDataTypes(this DataTable dataTable)
     {
-        dataTable.Rows.Add(record);
+        var dict = new Dictionary<string, Type>();
+        for (int i = 0; i < dataTable.Columns.Count; i++)
+        {
+            var dataTableColumn = dataTable.Columns[i];
+            dict.Add(dataTableColumn.ColumnName, dataTableColumn.DataType);
+        }
+        return dict;
     }
 }
