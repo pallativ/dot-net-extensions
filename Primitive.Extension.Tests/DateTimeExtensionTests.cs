@@ -17,7 +17,7 @@ public class DateTimeExtensionTests
     [Fact]
     public void VerifyToEpochDate()
     {
-        var expectedDate = new DateTime(2020, 10, 10);
+        var expectedDate = new DateTime(2020, 10, 10, 0,0,0, DateTimeKind.Utc);
         var epochSeconds = new DateTime(2020, 10, 10).ToEpochTime();
         var actualDate = DateTimeOffset.FromUnixTimeSeconds((long)epochSeconds);
         Assert.Equal(expectedDate, actualDate);

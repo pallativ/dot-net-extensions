@@ -16,7 +16,7 @@ public static class EnumExtensions
         var type = value.GetType();
         var memberInfo = type.GetMember(value.ToString());
         var attributes = memberInfo[0].GetCustomAttributes(typeof(T), false);
-        return attributes.Length == 0 ? (T)attributes[0]:  null;
+        return attributes.Length != 0 ? (T)attributes[0]:  null;
     }
 
     /// <summary>
@@ -29,5 +29,4 @@ public static class EnumExtensions
         var attribute = value.GetAttribute<DescriptionAttribute>();
         return attribute == null ? value.ToString() : attribute.Description;
     }
-
 }
