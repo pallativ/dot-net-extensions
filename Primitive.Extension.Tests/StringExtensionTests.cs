@@ -1,5 +1,7 @@
 using System.ComponentModel;
+using System.Diagnostics.Metrics;
 using Primitive.Extensions;
+using Primitive.Extensions.Builders;
 
 namespace Primitive.Extension.Tests;
 
@@ -45,5 +47,53 @@ public class EnumExtensionTests
         Assert.Equal("First Name", description);
         var attribute = Name.FirstName.GetAttribute<DescriptionAttribute>();
         Assert.NotNull(attribute);
+    }
+}
+
+public class EntityCriteriaBuilderTests
+{
+    public class Person
+    {
+        public string? FirstName { get; set; }
+    }
+
+    public class MockEntityCriteriaMapper : IEntityCriteriaMapper
+    {
+        public string GetEntityFieldPath(string fieldName)
+        {
+            switch (fieldName)
+            {
+                case "FirstName":
+                    return "FirstName";
+            }
+
+            return string.Empty;
+        }
+
+        public bool IsExists(string fieldName)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class MockEntityCriteriaMapperFactory : IEntityCriteriaMapperFactory
+    {
+        public IEntityCriteriaMapper GetCriteriaMapper(Type entityType)
+        {
+            return new MockEntityCriteriaMapper();
+        }
+    }
+
+    [Fact]
+    public void VerifySingleFieldCriteria()
+    {
+        var entityCriteriaBuilder = new EntityCriteriaBuilder<Person>(new MockEntityCriteriaMapperFactory());
+        var conditionTokens = new List<ConditionToken>()
+        {
+            new ConditionToken("FirstName", OperatorType.Equals, "Veera")
+        };
+        var result = entityCriteriaBuilder.GetCriteria(conditionTokens);
+        Assert.NotNull(result);
+        Assert.Equal($"Person => (Person.FirstName == \"Veera\")", result.ToString());
     }
 }
