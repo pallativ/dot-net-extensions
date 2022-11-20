@@ -14,7 +14,7 @@ namespace Primitive.Extensions
         public static double ToEpochTime(this DateTime date)
         {
             DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            TimeSpan diff = date.ToUniversalTime() - origin;
+            TimeSpan diff = date - origin;
             return diff.TotalSeconds;
         }
 
