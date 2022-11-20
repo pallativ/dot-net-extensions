@@ -13,27 +13,14 @@ public class EntityCriteriaBuilderTests
         public DateTime Dob { get; set; }
     }
 
-    public class MockEntityCriteriaMapper : IEntityCriteriaMapper
+    public class MockEntityCriteriaMapper : BaseEntityCriteriaMapper
     {
-        public string GetEntityFieldPath(string fieldName)
+        protected override IDictionary<string, string> FieldsMapping { get; set; } = new Dictionary<string, string>()
         {
-            switch (fieldName)
-            {
-                case "FirstName":
-                    return "FirstName";
-                case "Age":
-                    return "Age";
-                case "Dob":
-                    return "Dob";
-            }
-
-            return string.Empty;
-        }
-
-        public bool IsExists(string fieldName)
-        {
-            throw new NotImplementedException();
-        }
+            {"FirstName","FirstName"},
+            {"Age","Age"},
+            {"Dob","Dob"},
+        };
     }
 
     public class MockEntityCriteriaMapperFactory : IEntityCriteriaMapperFactory
