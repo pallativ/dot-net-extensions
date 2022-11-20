@@ -41,6 +41,8 @@ jobs:
         badge: true
         format: 'markdown'
         output: 'both'
+        fail_below_min: true
+        thresholds: '70 80'
    
     - name: Write to Job Summary
       run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY                
