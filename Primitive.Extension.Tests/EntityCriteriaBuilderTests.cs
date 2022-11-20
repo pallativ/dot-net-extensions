@@ -47,6 +47,7 @@ public class EntityCriteriaBuilderTests
     [Fact]
     public void VerifySingleFieldCriteria()
     {
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
         var entityCriteriaBuilder = new EntityCriteriaBuilder<Person>(new MockEntityCriteriaMapperFactory());
         var conditionTokens = new List<ConditionToken>()
         {
