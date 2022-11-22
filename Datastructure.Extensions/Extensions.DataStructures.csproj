@@ -18,5 +18,10 @@
 	<PropertyGroup>
 		<CodeAnalysisRuleSet>..\StyleCopConfig\StyleCop.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
-
+	<ItemGroup>
+		<AdditionalFiles Include="..\StyleCopConfig\stylecop.json" Link="stylecop.json" />
+	</ItemGroup>
+	<PropertyGroup>
+		<CodeAnalysisRuleSet>..\StyleCopConfig\StyleCop.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
 </Project>
