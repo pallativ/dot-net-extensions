@@ -1,8 +1,11 @@
-using Primitive.Extensions;
-using System.Text.RegularExpressions;
+// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace Primitive.Extension.Tests
 {
+    using System.Text.RegularExpressions;
+    using Primitive.Extensions;
+
     public class RandomExtensionsTests
     {
         [Fact]

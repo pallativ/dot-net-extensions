@@ -1,7 +1,10 @@
-﻿using System.Globalization;
+﻿// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace Primitive.Extensions
 {
+    using System.Globalization;
+
     public static class DateTimeExtensions
     {
         public const string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";

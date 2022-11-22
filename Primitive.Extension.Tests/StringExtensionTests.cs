@@ -1,15 +1,17 @@
+// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+namespace Primitive.Extension.Tests;
 using System.ComponentModel;
 using System.Diagnostics.Metrics;
 using Primitive.Extensions;
-
-namespace Primitive.Extension.Tests;
 
 public class StringExtensionTests
 {
     internal enum Name
     {
         FirstName,
-        LastName
+        LastName,
     }
 
     [Fact]
@@ -36,8 +38,9 @@ public class EnumExtensionTests
         FirstName,
         [Description("Last Name")]
         LastName,
-        FullName
+        FullName,
     }
+
     [Fact]
     public void VerifyGetAttribute()
     {

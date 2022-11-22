@@ -1,6 +1,9 @@
+// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+namespace Primitive.Extension.Tests;
 using System.Data;
 using Primitive.Extensions;
-namespace Primitive.Extension.Tests;
 
 public class DataColumnCollectionExtensionTests
 {
@@ -11,12 +14,12 @@ public class DataColumnCollectionExtensionTests
         var columns = new Dictionary<string, Type>
         {
             { "Name", "".GetType() },
-            { "Age", 1.GetType() }
+            { "Age", 1.GetType() },
         };
         table.Columns.Add(columns);
         Assert.Equal(2, table.Columns.Count);
         Assert.Equal("Name", table.Columns[0].ColumnName);
         Assert.Equal("Age", table.Columns[1].ColumnName);
-        Assert.Equal(new List<string>{"Name", "Age"}, table.GetColumnNames());
+        Assert.Equal(new List<string> { "Name", "Age" }, table.GetColumnNames());
     }
 }
