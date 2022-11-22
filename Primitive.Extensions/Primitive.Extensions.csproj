@@ -15,6 +15,9 @@
 	<ItemGroup>
 		<AdditionalFiles Include="..\StyleCopConfig\stylecop.json" Link="stylecop.json" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
 	<PropertyGroup>
 		<CodeAnalysisRuleSet>..\StyleCopConfig\StyleCop.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>

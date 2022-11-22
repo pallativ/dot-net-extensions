@@ -2,6 +2,17 @@
 
 public interface IEntityCriteriaMapper
 {
+    /// <summary>
+    /// Gets the entity field mapping using field name
+    /// </summary>
+    /// <param name="fieldName">Field Name</param>
+    /// <returns>returns Entity Field Name</returns>
     string GetEntityFieldPath(string fieldName);
+
+    /// <summary>
+    /// Checks whether the field name is configured.
+    /// </summary>
+    /// <param name="fieldName">Field Name</param>
+    /// <returns>Returns boolean</returns>
     bool IsExists(string fieldName);
 }

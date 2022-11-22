@@ -3,17 +3,28 @@
 
 namespace Primitive.Extensions.Builders;
 
+/// <summary>
+/// Defines BaseEntityCriteriaMapper type.
+/// </summary>
 public abstract class BaseEntityCriteriaMapper : IEntityCriteriaMapper
 {
+    /// <summary>
+    /// Gets or sets contains the fields and entity fields mapping.
+    /// </summary>
     protected abstract IDictionary<string, string> FieldsMapping { get; set; }
 
+    /// <inheritdoc/>
     public string GetEntityFieldPath(string fieldName)
     {
         if (IsExists(fieldName))
+        {
             return GetMappedFieldName(fieldName);
+        }
+
         throw new InvalidEntityCriteriaFieldException();
     }
 
+    /// <inheritdoc/>
     public bool IsExists(string fieldName)
     {
         return FieldsMapping.ToList().Any(t => t.Key.ToUpper().Equals(fieldName.ToUpper()));
