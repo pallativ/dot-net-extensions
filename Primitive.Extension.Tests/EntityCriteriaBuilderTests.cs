@@ -1,25 +1,30 @@
-using System.Globalization;
-using Primitive.Extensions;
-using Primitive.Extensions.Builders;
+// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace Primitive.Extension.Tests;
+using System.Globalization;
+using Extensions;
+using Extensions.Builders;
 
 public class EntityCriteriaBuilderTests
 {
     public class Person
     {
         public string? FirstName { get; set; }
+
         public int Age { get; set; }
+
         public DateTime Dob { get; set; }
     }
 
     public class MockEntityCriteriaMapper : BaseEntityCriteriaMapper
     {
+        /// <inheritdoc/>
         protected override IDictionary<string, string> FieldsMapping { get; set; } = new Dictionary<string, string>()
         {
-            {"FirstName","FirstName"},
-            {"Age","Age"},
-            {"Dob","Dob"},
+            { "FirstName", "FirstName" },
+            { "Age", "Age" },
+            { "Dob", "Dob" },
         };
     }
 
@@ -40,7 +45,7 @@ public class EntityCriteriaBuilderTests
         {
             new("FirstName", OperatorType.Equals, "Veera"),
             new("Age", OperatorType.GreaterThen, 18.ToString()),
-            new("Dob", OperatorType.GreaterThen, new DateTime(2020,1,1).ToEpochTime().ToString(CultureInfo.InvariantCulture)),
+            new("Dob", OperatorType.GreaterThen, new DateTime(2020, 1, 1).ToEpochTime().ToString(CultureInfo.InvariantCulture)),
         };
         var result = entityCriteriaBuilder.GetCriteria(conditionTokens);
         Assert.NotNull(result);

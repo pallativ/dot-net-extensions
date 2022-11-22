@@ -1,3 +1,6 @@
+// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 using Primitive.Extensions;
 
 namespace Primitive.Extension.Tests;
@@ -17,7 +20,7 @@ public class DateTimeExtensionTests
     [Fact]
     public void VerifyToEpochDate()
     {
-        var expectedDate = new DateTime(2020, 10, 10, 0,0,0, DateTimeKind.Utc);
+        var expectedDate = new DateTime(2020, 10, 10, 0, 0, 0, DateTimeKind.Utc);
         var epochSeconds = new DateTime(2020, 10, 10).ToEpochTime();
         var actualDate = DateTimeOffset.FromUnixTimeSeconds((long)epochSeconds);
         Assert.Equal(expectedDate, actualDate);

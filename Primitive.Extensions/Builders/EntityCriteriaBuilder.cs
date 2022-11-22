@@ -1,14 +1,17 @@
-﻿using System.ComponentModel;
-using System.Globalization;
-using System.Linq.Expressions;
+﻿// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace Primitive.Extensions.Builders;
+using System.ComponentModel;
+using System.Globalization;
+using System.Linq.Expressions;
 
 public class EntityCriteriaBuilder<T> : IEntityCriteriaBuilder<T> where T : class, new()
 {
     private readonly IEntityCriteriaMapperFactory _entityCriteriaMapperFactory;
     private readonly ParameterExpression _parameterExpression;
     private readonly T _entity;
+
     public EntityCriteriaBuilder(IEntityCriteriaMapperFactory entityCriteriaMapperFactory)
     {
         _entityCriteriaMapperFactory = entityCriteriaMapperFactory;
@@ -87,6 +90,7 @@ public class EntityCriteriaBuilder<T> : IEntityCriteriaBuilder<T> where T : clas
         }
         throw new Exception("Invalid expression");
     }
+
     private object ConvertTo(string value, Type type)
     {
         return type == typeof(DateTime) ? Convert.ToInt64(value).ToDateTime().ToString(CultureInfo.InvariantCulture) : value;
