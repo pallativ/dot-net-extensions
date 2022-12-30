@@ -20,5 +20,6 @@
 	</ItemGroup>
 	<PropertyGroup>
 		<CodeAnalysisRuleSet>..\StyleCopConfig\StyleCop.ruleset</CodeAnalysisRuleSet>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 </Project>

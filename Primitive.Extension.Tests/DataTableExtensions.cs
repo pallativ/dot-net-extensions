@@ -1,4 +1,4 @@
-// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Copyright (c) . All Rights Reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System.Data;
@@ -12,7 +12,7 @@ public class DataTableExtensions
     public void Verify_DataTable_DataTypes()
     {
         var table = new DataTable("Sample");
-        var columns = new Dictionary<string, Type>() { { "Name", "".GetType() }, { "Age", 1.GetType() } };
+        var columns = new Dictionary<string, Type>() { { "Name", string.Empty.GetType() }, { "Age", 1.GetType() } };
         table.Columns.Add(columns);
         var dict = table.GetDataTypes();
         Assert.Equal(columns, dict);

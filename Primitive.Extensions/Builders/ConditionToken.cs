@@ -1,4 +1,4 @@
-﻿// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+﻿// Copyright (c) . All Rights Reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace Primitive.Extensions.Builders;
@@ -35,5 +35,4 @@ public class ConditionToken
     /// Gets or sets Value.
     /// </summary>
     public string Value { get; set; }
-
 }

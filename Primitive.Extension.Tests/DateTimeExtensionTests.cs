@@ -1,9 +1,8 @@
-// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Copyright (c) . All Rights Reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using Primitive.Extensions;
-
 namespace Primitive.Extension.Tests;
+using Primitive.Extensions;
 
 public class DateTimeExtensionTests
 {
@@ -37,5 +36,4 @@ public class DateTimeExtensionTests
         var result = date.IsValid(out _, format);
         Assert.Equal(expectedResult, result);
     }
-
 }

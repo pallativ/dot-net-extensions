@@ -1,4 +1,4 @@
-// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Copyright (c) . All Rights Reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace Primitive.Extension.Tests;
@@ -13,7 +13,7 @@ public class DataColumnCollectionExtensionTests
         var table = new DataTable("Sample");
         var columns = new Dictionary<string, Type>
         {
-            { "Name", "".GetType() },
+            { "Name", string.Empty.GetType() },
             { "Age", 1.GetType() },
         };
         table.Columns.Add(columns);

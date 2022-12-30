@@ -1,4 +1,4 @@
-// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Copyright (c) . All Rights Reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace Primitive.Extension.Tests;
@@ -28,14 +28,6 @@ public class EntityCriteriaBuilderTests
         };
     }
 
-    public class MockEntityCriteriaMapperFactory : IEntityCriteriaMapperFactory
-    {
-        public IEntityCriteriaMapper GetCriteriaMapper(Type entityType)
-        {
-            return new MockEntityCriteriaMapper();
-        }
-    }
-
     [Fact]
     public void VerifySingleFieldCriteria()
     {
@@ -43,9 +35,9 @@ public class EntityCriteriaBuilderTests
         var entityCriteriaBuilder = new EntityCriteriaBuilder<Person>(new MockEntityCriteriaMapperFactory());
         var conditionTokens = new List<ConditionToken>()
         {
-            new("FirstName", OperatorType.Equals, "Veera"),
-            new("Age", OperatorType.GreaterThen, 18.ToString()),
-            new("Dob", OperatorType.GreaterThen, new DateTime(2020, 1, 1).ToEpochTime().ToString(CultureInfo.InvariantCulture)),
+            new ("FirstName", OperatorType.Equals, "Veera"),
+            new ("Age", OperatorType.GreaterThen, 18.ToString()),
+            new ("Dob", OperatorType.GreaterThen, new DateTime(2020, 1, 1).ToEpochTime().ToString(CultureInfo.InvariantCulture)),
         };
         var result = entityCriteriaBuilder.GetCriteria(conditionTokens);
         Assert.NotNull(result);
