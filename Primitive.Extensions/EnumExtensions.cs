@@ -9,7 +9,6 @@ using System.ComponentModel;
 /// </summary>
 public static class EnumExtensions
 {
-
     /// <summary>
     /// Gets the attribute using given enum.
     /// </summary>

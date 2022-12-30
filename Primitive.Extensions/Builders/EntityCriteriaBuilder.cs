@@ -29,6 +29,7 @@ public class EntityCriteriaBuilder<T> : IEntityCriteriaBuilder<T>
         {
             throw new Exception("Creating the expression");
         }
+
         return Expression.Lambda<Func<T, bool>>(finalExpression, _parameterExpression);
     }
 

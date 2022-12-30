@@ -9,7 +9,6 @@ using System.Data;
 /// </summary>
 public static class DataTableExtensions
 {
-
     /// <summary>
     /// Gets the data table types.
     /// </summary>
