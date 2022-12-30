@@ -1,4 +1,4 @@
-﻿// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+﻿// Copyright (c) . All Rights Reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace Primitive.Extensions.Builders;
@@ -6,7 +6,8 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq.Expressions;
 
-public class EntityCriteriaBuilder<T> : IEntityCriteriaBuilder<T> where T : class, new()
+public class EntityCriteriaBuilder<T> : IEntityCriteriaBuilder<T>
+    where T : class, new()
 {
     private readonly IEntityCriteriaMapperFactory _entityCriteriaMapperFactory;
     private readonly ParameterExpression _parameterExpression;
@@ -54,18 +55,19 @@ public class EntityCriteriaBuilder<T> : IEntityCriteriaBuilder<T> where T : clas
             catch (Exception)
             {
                 // TODO Log Exception
-                // 
             }
         }
+
         return expressions;
     }
 
     private Expression BuildFilterExpression(ConditionToken token, IEntityCriteriaMapper entityCriteriaMapper)
     {
-        //Build Property. - This builds the left side of the where clause.
+        // Build Property. - This builds the left side of the where clause.
         Expression memberExpression = GetLeftOperand(token, entityCriteriaMapper, _parameterExpression);
 
         var value = ConvertTo(token.Value, memberExpression.Type);
+
         // Build the right side of the expression.
         ConstantExpression constant = GetRightOperand(value, memberExpression);
 
@@ -88,6 +90,7 @@ public class EntityCriteriaBuilder<T> : IEntityCriteriaBuilder<T> where T : clas
             default:
                 break;
         }
+
         throw new Exception("Invalid expression");
     }
 
@@ -96,6 +99,13 @@ public class EntityCriteriaBuilder<T> : IEntityCriteriaBuilder<T> where T : clas
         return type == typeof(DateTime) ? Convert.ToInt64(value).ToDateTime().ToString(CultureInfo.InvariantCulture) : value;
     }
 
+    /// <summary>
+    /// Gets the left Operand.
+    /// </summary>
+    /// <param name="token"></param>
+    /// <param name="entityCriteriaMapper"></param>
+    /// <param name="parameterExpression"></param>
+    /// <returns></returns>
     private static Expression GetLeftOperand(ConditionToken token, IEntityCriteriaMapper entityCriteriaMapper, ParameterExpression parameterExpression)
     {
         var entityFieldName = entityCriteriaMapper.GetEntityFieldPath(token.FieldName);
@@ -107,10 +117,12 @@ public class EntityCriteriaBuilder<T> : IEntityCriteriaBuilder<T> where T : clas
         var propertyType = memberExpression.Type;
         var converter = TypeDescriptor.GetConverter(propertyType);
         if (!converter.CanConvertFrom(value.GetType()))
+        {
             throw new NotSupportedException($"Unable to convert the value '{value}' to type {propertyType.Name}");
+        }
+
         var propertyValue = converter.ConvertFrom(value);
         var constant = Expression.Constant(propertyValue);
         return constant;
     }
-
 }

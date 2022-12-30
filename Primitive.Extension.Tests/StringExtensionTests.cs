@@ -1,9 +1,8 @@
-// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Copyright (c) . All Rights Reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace Primitive.Extension.Tests;
 using System.ComponentModel;
-using System.Diagnostics.Metrics;
 using Primitive.Extensions;
 
 public class StringExtensionTests

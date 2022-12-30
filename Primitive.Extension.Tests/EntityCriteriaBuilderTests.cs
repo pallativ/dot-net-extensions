@@ -1,4 +1,4 @@
-// Copyright (c) VajraTechMinds.com. All Rights Reserved.
+// Copyright (c) . All Rights Reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace Primitive.Extension.Tests;
@@ -26,14 +26,6 @@ public class EntityCriteriaBuilderTests
             { "Age", "Age" },
             { "Dob", "Dob" },
         };
-    }
-
-    public class MockEntityCriteriaMapperFactory : IEntityCriteriaMapperFactory
-    {
-        public IEntityCriteriaMapper GetCriteriaMapper(Type entityType)
-        {
-            return new MockEntityCriteriaMapper();
-        }
     }
 
     [Fact]
