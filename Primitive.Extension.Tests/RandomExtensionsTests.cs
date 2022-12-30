@@ -19,7 +19,6 @@ namespace Primitive.Extension.Tests
             }
         }
 
-
         [Theory]
         [InlineData(10)]
         [InlineData(20)]
@@ -27,7 +26,7 @@ namespace Primitive.Extension.Tests
         [InlineData(21)]
         [InlineData(26)]
         [InlineData(1000)]
-        public void Verify_NextString(int size)
+        public void Verify_Next_String(int size)
         {
             Regex regex = new Regex("^[A-Z]*$");
             var random = new Random();
